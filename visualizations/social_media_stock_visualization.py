@@ -172,6 +172,9 @@ class CombinedVisualizer:
 
         # get all features
         sentiment_stock_feature_dict = self.extract_sentiment_and_stock_features(return_as_dict=True)
+        if not len(sentiment_stock_feature_dict.get(GlobalConfig.DATE_LIST)):
+            print('Social media feature dictionaries and stock feature had no common dates.')
+            sys.exit(0)
 
         # rescale stock features to range values between -1 and 1
         over_night_diff_list_rescaled = self.rescale_array(sentiment_stock_feature_dict[GlobalConfig.OVER_NIGHT_DIFF],
@@ -368,8 +371,8 @@ class CombinedVisualizer:
             np.corrcoef(sentiment_stock_feature_dict[reddit_feature], vol_fluc_list_rescaled)[0, 1])
         reddit_corrcoef_list.append(
             np.corrcoef(sentiment_stock_feature_dict[reddit_feature], price_fluc_list_rescaled)[0, 1])
-        #
-        # # calculate stock feature correlations to twitter sentiment
+
+        # calculate stock feature correlations to twitter sentiment
         twitter_corrcoef_list = []
         twitter_corrcoef_list.append(
             np.corrcoef(sentiment_stock_feature_dict[twitter_feature], over_night_diff_list_rescaled)[0, 1])
