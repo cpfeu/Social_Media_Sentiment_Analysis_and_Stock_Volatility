@@ -16,7 +16,7 @@ a number of different features are calculated. Those features are the
 Those features are calculated and stored in 
 nested hash tables with the structure shown below:
 
-![Nested Hash Tables for Stock Features](./README_images/stock_features_hash_table_structure2.PNG)
+![Nested Hash Tables for Stock Features](README_images/stock_features_hash_table_structure.PNG)
 
 Similarly, Reddit and Twitter social media posts are downloaded
 and their sentiment is predicted with the FinBERT NLP 
